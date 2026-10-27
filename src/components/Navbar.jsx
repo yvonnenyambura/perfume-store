@@ -24,7 +24,7 @@ function Navbar() {
                     ))}
                 </nav>
                 <div className="navbar-center">
-                    <Link to="/"><h2>Mali Fragrances</h2></Link>
+                    <Link to="/"><h2>Lulu Fragrances</h2></Link>
                 </div>
                 <div className="navbar-right">
                     <Link to="/cart">Cart</Link>
