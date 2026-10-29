@@ -1,4 +1,5 @@
 import products from '../data/products'
+import ProductCard from '../components/ProductCard'
 
 function Shop() {
     return(
@@ -6,9 +7,7 @@ function Shop() {
         <h1>This is the Shop Page</h1>
         {products.map((product) => (
             <div key={product.id}>
-                <h3>{product.name}</h3>
-                <p>{product.brand}</p>
-          <p>KES {product.price}</p>
+            <ProductCard product={product} />
             </div>
     ))}
         </>
