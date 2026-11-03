@@ -15,6 +15,7 @@ function ProductDetail() {
     }
     return (
         <>
+        <img src={product.image} alt={product.name}></img>
         <h1>{product.name}</h1>
         <p>{product.brand}</p>
         <p>Price: KES {product.price.toLocaleString()}</p>
