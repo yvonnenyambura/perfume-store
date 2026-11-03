@@ -1,5 +1,7 @@
+import {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
+import {CartContext} from '../context/CartContext.jsx'
 
 // Data for navigation links
 const navLinks = [
@@ -10,6 +12,7 @@ const navLinks = [
 ]
 
 function Navbar() {
+    const {cart} = useContext(CartContext)
     return (
         <>
             <div className="announcement">Free delivery in Nairobi over KES 10,000</div>
@@ -27,7 +30,7 @@ function Navbar() {
                     <Link to="/"><h2>Lulu Fragrances</h2></Link>
                 </div>
                 <div className="navbar-right">
-                    <Link to="/cart">Cart</Link>
+                    <Link to="/cart">Cart ({cart.length})</Link>
                 </div>
             </header>
         </>
