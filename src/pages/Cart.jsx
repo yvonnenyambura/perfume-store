@@ -10,7 +10,7 @@ function Cart() {
         setCart(cart.filter((item, i) => i !== index))
 
     }
-    const total = cart.reduce((sum, item) => sum + item.price, 0)
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
 
     if (cart.length === 0) {
         return (
@@ -26,7 +26,8 @@ function Cart() {
             {cart.map((item, index) => (
                 <div key={index}>
                     <p>{item.name}</p>
-                    <p>Price: KES {item.price.toLocaleString()}</p>
+                    <p>Quantity: {item.quantity}</p>
+                    <p>Price: KES {(item.price * item.quantity).toLocaleString()}</p>
                     <button onClick={() => handlesRemove(index)}>Remove</button>
                 </div>
             ))}

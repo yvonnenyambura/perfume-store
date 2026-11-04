@@ -10,7 +10,14 @@ function ProductDetail() {
     const { cart, setCart } = useContext(CartContext)
 
     function handleAddToCart() {
-        setCart([...cart, product])
+     const existingItem = cart.find((item) => item.id === product.id) 
+     
+     if (existingItem) {
+        setCart(cart.map((item) =>
+        item.id === product.id ? {... item,quantity: item.quantity + 1} : item))
+     }else {
+        setCart([...cart, {...product, quantity: 1}])
+     }
     }
 
 
@@ -22,6 +29,8 @@ function ProductDetail() {
             </>
         )
     }
+
+    const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0)
     return (
         <>
             <img src={product.image} alt={product.name}></img>
@@ -31,7 +40,7 @@ function ProductDetail() {
             <p>{product.description}</p>
             <p>Notes: {product.notes}</p>
             <button onClick={handleAddToCart}>Add to Cart</button>
-            <p>Items in Cart: {cart.length}</p>
+            <p>Items in Cart: {itemCount}</p>
 
             <Link to="/shop">Back to Shop</Link>
         </>

@@ -13,6 +13,9 @@ const navLinks = [
 
 function Navbar() {
     const {cart} = useContext(CartContext)
+
+    const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0)
+
     return (
         <>
             <div className="announcement">Free delivery in Nairobi over KES 10,000</div>
@@ -30,7 +33,7 @@ function Navbar() {
                     <Link to="/"><h2>Lulu Fragrances</h2></Link>
                 </div>
                 <div className="navbar-right">
-                    <Link to="/cart">Cart ({cart.length})</Link>
+                    <Link to="/cart">Cart ({itemCount})</Link>
                 </div>
             </header>
         </>

@@ -8,7 +8,7 @@ function CheckOutPage() {
 
     
 
-    const total = cart.reduce((sum, item) => sum + item.price, 0)
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
 
     const [formData, setFormData] = useState({ name: "", phone: "", address: "" })
 
@@ -39,7 +39,8 @@ function CheckOutPage() {
             {cart.map((item, index) => (
                 <div key={index}>
                     <p>{item.name}</p>
-                    <p>Price: KES {item.price.toLocaleString()}</p>
+                    <p>Quantity: {item.quantity}</p>
+                    <p>Price: KES {(item.price * item.quantity).toLocaleString()}</p>
                 </div>
             ))}
 
@@ -47,15 +48,15 @@ function CheckOutPage() {
             <form onSubmit={handleSubmit}>
                 <label>
                     Name:
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} />
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} required />
                 </label>
                 <label>
                     Phone Number:
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} />
+                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
                 </label>
                 <label>
                     Address:
-                    <input type="text" name="address" value={formData.address} onChange={handleChange} />
+                    <input type="text" name="address" value={formData.address} onChange={handleChange} required />
                 </label>
                 <button type="submit">Place Order</button>
             </form>
