@@ -21,7 +21,8 @@ function OrderConfirmation() {
         {cart.map((item, index) => (
             <div key={index}>
                 <p>{item.name}</p>
-                <p>Price: KES {item.price.toLocaleString()}</p>
+                <p>Quantity: {item.quantity}</p>
+                <p>Price: KES {(item.price * item.quantity).toLocaleString()}</p>
             </div>
             
         ))}

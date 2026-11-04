@@ -12,6 +12,13 @@ function Cart() {
     }
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
 
+    function handleIncrease(index) {
+        setCart(cart.map((item,i) => i === index ? {...item, quantity: item.quantity + 1} : item))
+    }
+     function handleDecrease(index) {
+        setCart(cart.map((item,i) => i === index ? {...item, quantity: Math.max(1, item.quantity - 1)} : item))
+    }
+
     if (cart.length === 0) {
         return (
             <>
@@ -29,6 +36,8 @@ function Cart() {
                     <p>Quantity: {item.quantity}</p>
                     <p>Price: KES {(item.price * item.quantity).toLocaleString()}</p>
                     <button onClick={() => handlesRemove(index)}>Remove</button>
+                    <button onClick={() => handleIncrease(index)}>+</button>
+                    <button onClick={() => handleDecrease(index)}>-</button>
                 </div>
             ))}
 
