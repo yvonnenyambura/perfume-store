@@ -16,7 +16,7 @@ function Cart() {
         return (
             <>
                 <h1>Your cart is empty</h1>
-                <Link to="/shop">Continue Shopping</Link>
+                <Link to="/shop">Shop</Link>
             </>
         )
     }
