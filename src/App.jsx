@@ -8,6 +8,8 @@ import CheckOutPage from './pages/CheckOutPage'
 import OrderConfirmation from './pages/OrderConfirmation'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -22,7 +24,9 @@ function App() {
       <Route path="/order-confirmation" element={<OrderConfirmation/>} />
       <Route path="/product/:id" element={<ProductDetail/>} />
       <Route path="/shop" element={<Shop/>} />
+      <Route path="*" element={<NotFound/>} />
     </Routes>
+    <Footer/>
     </>
   )
 }
