@@ -10,7 +10,7 @@ function Home() {
     return(
         <>
         <div className="hero">
-            <h1>Welcome to Lulu Fragrances</h1>
+            <h1 className="text-3xl font-serif text-burgundy">Welcome to Lulu Fragrances</h1>
             <p>Your one-stop shop for all your fragrance needs.</p>
             <Link to="/shop" className="btn">Shop Now</Link>
         </div>

@@ -1,9 +1,14 @@
-* {
-  margin: 0;
-  box-sizing: border-box;
+@import "tailwindcss";
+
+@theme {
+   --color-burgundy: #6B1F2E;
+  --color-burgundy-dark: #4A1420;
+  --color-cream: #FAF3E8;
+  --color-sand: #F1E6D3;
+  --color-gold: #B8893E;
+  --color-ink: #2B1B1B;
+
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Jost", sans-serif;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
