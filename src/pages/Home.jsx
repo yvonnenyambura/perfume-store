@@ -23,7 +23,8 @@ function Home() {
             </p>
             <span className="mt-3 block h-px w-24 bg-gold" />
             <h1 className="mt-6 font-serif text-4xl leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
-                Find the scent <br className="hidden lg:block" />
+                Find the scent <br />
+                
                 that feels like you
             </h1>
             <p className="mt-6 text-lg text-cream/90">
