@@ -7,21 +7,50 @@ function Home() {
     // Get the first 3 products as featured products
     const featuredProducts = products.slice(0,3) 
 
-    return(
+    return (
         <>
-        <div className="hero">
-            <h1 className="text-3xl font-serif text-burgundy">Welcome to Lulu Fragrances</h1>
-            <p>Your one-stop shop for all your fragrance needs.</p>
-            <Link to="/shop" className="btn">Shop Now</Link>
+ <section
+    className="relative flex min-h-[480px] items-center bg-burgundy bg-cover bg-right-top md:min-h-[560px]"
+    style={{ backgroundImage: "url('/images/hero.png')" }}
+>
+    {/* Dark fade on the left so the text stays readable */}
+    <div className="absolute inset-0 bg-gradient-to-r from-burgundy via-burgundy/70 to-transparent lg:via-burgundy/40" />
+
+    <div className="relative mx-auto w-full max-w-7xl px-6">
+        <div className="max-w-xl text-cream">
+            <p className="text-xs uppercase tracking-[0.3em] text-gold-light">
+                Welcome to Lulu Fragrances
+            </p>
+            <span className="mt-3 block h-px w-24 bg-gold" />
+            <h1 className="mt-6 font-serif text-4xl leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl">
+                Find the scent <br className="hidden lg:block" />
+                that feels like you
+            </h1>
+            <p className="mt-6 text-lg text-cream/90">
+                Timeless fragrances. Unforgettable you.
+            </p>
+            <Link
+                to="/shop"
+                className="mt-10 inline-block rounded-full bg-cream px-10 py-4 text-sm font-medium text-burgundy transition hover:bg-sand"
+            >
+                Shop Now
+            </Link>
         </div>
-        <div className="featured-products">
-            <h2>Featured Products</h2>
-            <div className="product-grid">
-                {featuredProducts.map(product => (
-                    <ProductCard key={product.id} product={product} />
-                ))}
-            </div>
-        </div>
+    </div>
+</section>
+            
+
+            {/* Featured perfumes */}
+            <section className="mx-auto max-w-7xl px-6 py-16 bg-cream">
+                <h2 className="mb-10 text-center font-serif text-4xl text-burgundy">
+                    Featured Perfumes
+                </h2>
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+                    {featuredProducts.map((product) => (
+                        <ProductCard key={product.id} product={product} />
+                    ))}
+                </div>
+            </section>
         </>
     )
 }

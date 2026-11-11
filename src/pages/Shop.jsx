@@ -55,12 +55,11 @@ function Shop() {
             {scentFilter && <p>Filtered by scent: {scentFilter}</p>}
             {genderFilter && <p>Filtered by gender: {genderFilter}</p>}
             {filteredProducts.length === 0 && <p>No perfumes found</p>}
-            {filteredProducts.map((product) => (
-                <div key={product.id}>
-                    <ProductCard product={product} />
-                </div>
-                
-            ))}
+            <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-6 md:grid-cols-3 md:gap-6 xl:grid-cols-4">
+    {filteredProducts.map((product) => (
+        <ProductCard key={product.id} product={product} />
+    ))}
+</div>
         </>
     )
 }
