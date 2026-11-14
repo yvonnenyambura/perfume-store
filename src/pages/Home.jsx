@@ -39,9 +39,30 @@ function Home() {
         </div>
     </div>
 </section>
-            
 
-            {/* Featured perfumes */}
+{/* Shop by category */}
+<section className="bg-cream">
+    <div className="mx-auto max-w-7xl px-6 pt-16">
+        <div className="mb-8 flex items-center gap-6">
+            <span className="h-px flex-1 bg-gold/60" />
+            <h2 className="font-serif text-3xl text-burgundy md:text-4xl">Shop by Category</h2>
+            <span className="h-px flex-1 bg-gold/60" />
+        </div>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6">
+            {["Women", "Men", "Unisex"].map((category) => (
+                <Link
+                    key={category}
+                    to="/shop"
+                    className="flex h-28 items-center justify-center rounded-2xl bg-sand font-serif text-3xl text-burgundy transition hover:bg-burgundy hover:text-cream md:h-32"
+                >
+                    {category}
+                </Link>
+            ))}
+        </div>
+    </div>
+</section>
+
+{/* Featured perfumes */}
             <section className="mx-auto max-w-7xl px-6 py-16 bg-cream">
                 <h2 className="mb-10 text-center font-serif text-4xl text-burgundy">
                     Featured Perfumes
@@ -53,7 +74,7 @@ function Home() {
                 </div>
             </section>
         </>
-    )
+    )            
 }
 
 export default Home
