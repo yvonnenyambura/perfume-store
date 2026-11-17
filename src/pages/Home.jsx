@@ -1,6 +1,8 @@
 import {Link} from 'react-router-dom'
 import products from '../data/products'
 import ProductCard from '../components/ProductCard'
+import FeaturedCarousel from '../components/FeaturedCarousel'
+
 
 function Home() {
 
@@ -63,16 +65,36 @@ function Home() {
 </section>
 
 {/* Featured perfumes */}
-            <section className="mx-auto max-w-7xl px-6 py-16 bg-cream">
-                <h2 className="mb-10 text-center font-serif text-4xl text-burgundy">
-                    Featured Perfumes
-                </h2>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
-                    {featuredProducts.map((product) => (
-                        <ProductCard key={product.id} product={product} />
-                    ))}
-                </div>
-            </section>
+{/* Featured perfumes: phones get the sliding carousel */}
+<div className="md:hidden">
+    <FeaturedCarousel products={products} />
+</div>
+
+{/* Featured perfumes: tablets and laptops get 3 static cards */}
+<section className="hidden bg-cream md:block">
+    <div className="mx-auto max-w-7xl px-6 py-16">
+        <div className="mb-10 flex items-center gap-6">
+            <span className="h-px flex-1 bg-gold/60" />
+            <h2 className="font-serif text-3xl text-burgundy md:text-4xl">Featured Perfumes</h2>
+            <span className="h-px flex-1 bg-gold/60" />
+        </div>
+
+        <div className="grid grid-cols-3 gap-6">
+            {featuredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+            ))}
+        </div>
+
+        <div className="mt-12 text-center">
+            <Link
+                to="/shop"
+                className="inline-block rounded-full border border-burgundy px-10 py-3 text-xs uppercase tracking-[0.2em] text-burgundy transition hover:bg-burgundy hover:text-cream"
+            >
+                View All Perfumes
+            </Link>
+        </div>
+    </div>
+</section>
         </>
     )            
 }
