@@ -1,11 +1,15 @@
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { CartContext } from '../context/CartContext.jsx'
 
 const PER_PAGE = 2 // cards in view on a phone
+const DELAY = 3500 // time between slides, in milliseconds
 
 function FeaturedCarousel({ products }) {
+    const { cart, setCart } = useContext(CartContext)
     const items = products.slice(0, 6)
     const pageCount = Math.ceil(items.length / PER_PAGE)
     const [page, setPage] = useState(0)
+    const [paused, setPaused] = useState(false)
 
     // Group the cards into pages of 2
     const pages = Array.from({ length: pageCount }, (_, i) =>
@@ -16,8 +20,39 @@ function FeaturedCarousel({ products }) {
     const next = () => setPage((p) => (p + 1) % pageCount)
     const prev = () => setPage((p) => (p - 1 + pageCount) % pageCount)
 
+    // Same logic as the product page's Add to Cart
+    function addToCart(product) {
+        const existing = cart.find((item) => item.id === product.id)
+        if (existing) {
+            setCart(cart.map((item) =>
+                item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+            ))
+        } else {
+            setCart([...cart, { ...product, quantity: 1 }])
+        }
+    }
+
+    // Automatic sliding: wait, then go to the next page.
+    // It restarts after every change, so tapping an arrow or dot never causes a double jump.
+    useEffect(() => {
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        if (paused || reduceMotion || pageCount < 2) return
+
+        const timer = setTimeout(() => {
+            setPage((p) => (p + 1) % pageCount)
+        }, DELAY)
+
+        return () => clearTimeout(timer)
+    }, [page, paused, pageCount])
+
     return (
-        <section className="relative overflow-hidden bg-cream px-4 py-12">
+        <section
+            className="relative overflow-hidden bg-cream px-4 py-12"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            onTouchStart={() => setPaused(true)}
+            onTouchEnd={() => setPaused(false)}
+        >
             {/* Heading */}
             <div className="text-center">
                 <div className="flex items-center justify-center gap-3">
@@ -65,6 +100,7 @@ function FeaturedCarousel({ products }) {
                                         </p>
                                         <button
                                             type="button"
+                                            onClick={() => addToCart(product)}
                                             className="mt-3 w-full rounded-lg bg-burgundy px-3 py-2 text-xs font-medium text-cream"
                                         >
                                             Add to Cart
