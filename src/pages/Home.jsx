@@ -2,6 +2,7 @@ import {Link} from 'react-router-dom'
 import products from '../data/products'
 import ProductCard from '../components/ProductCard'
 import FeaturedCarousel from '../components/FeaturedCarousel'
+import WhyShopWithUs from '../components/WhyShopWithUs'
 
 
 function Home() {
@@ -95,6 +96,7 @@ function Home() {
         </div>
     </div>
 </section>
+<WhyShopWithUs />
         </>
     )            
 }
