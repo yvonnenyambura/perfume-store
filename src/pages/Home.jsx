@@ -5,6 +5,14 @@ import FeaturedCarousel from '../components/FeaturedCarousel'
 import WhyShopWithUs from '../components/WhyShopWithUs'
 
 
+const scents = [
+    { name: "Floral", note: "Soft and romantic" },
+    { name: "Woody", note: "Warm and grounded" },
+    { name: "Fruity", note: "Sweet and playful" },
+    { name: "Amber", note: "Rich and glowing" },
+]
+
+
 function Home() {
 
     // Get the first 3 products as featured products
@@ -96,6 +104,36 @@ function Home() {
         </div>
     </div>
 </section>
+
+{/* Shop by scent */}
+<section className="bg-sand">
+    <div className="mx-auto max-w-7xl px-6 py-14 md:py-16">
+        <div className="mb-10 flex items-center gap-6">
+            <span className="h-px flex-1 bg-gold/60" />
+            <h2 className="font-serif text-3xl text-burgundy md:text-4xl">Shop by Scent</h2>
+            <span className="h-px flex-1 bg-gold/60" />
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+            {scents.map((scent) => (
+                <Link
+                    key={scent.name}
+                    to="/shop"
+                    className="group rounded-2xl border border-gold/40 bg-cream p-6 text-center transition hover:-translate-y-1 hover:bg-burgundy hover:shadow-lg md:p-8"
+                >
+                    <h3 className="font-serif text-2xl text-burgundy transition group-hover:text-cream md:text-3xl">
+                        {scent.name}
+                    </h3>
+                    <p className="mt-2 text-xs uppercase tracking-[0.15em] text-ink/70 transition group-hover:text-gold-light">
+                        {scent.note}
+                    </p>
+                </Link>
+            ))}
+        </div>
+    </div>
+</section>
+
+
 <WhyShopWithUs />
         </>
     )            
