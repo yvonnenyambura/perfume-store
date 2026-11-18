@@ -73,7 +73,7 @@ function Home() {
     </div>
 </section>
 
-{/* Featured perfumes */}
+
 {/* Featured perfumes: phones get the sliding carousel */}
 <div className="md:hidden">
     <FeaturedCarousel products={products} />
@@ -133,6 +133,41 @@ function Home() {
     </div>
 </section>
 
+{/* Brand story */}
+<section className="bg-cream">
+    <div className="mx-auto grid max-w-7xl items-center gap-8 px-6 py-14 md:grid-cols-2 md:gap-14 md:py-20">
+
+        {/* Photo: save any photo as public/images/story.jpg. Until then you'll see a sand block. */}
+        <div
+            className="min-h-[300px] rounded-2xl bg-sand bg-cover bg-center md:min-h-[420px]"
+            style={{ backgroundImage: "url('/images/donna.jpg')" }}
+        />
+
+        {/* Text */}
+        <div className="text-center md:text-left">
+            <p className="text-xs uppercase tracking-[0.3em] text-burgundy/80">Our Story</p>
+            <span className="mx-auto mt-3 block h-px w-24 bg-gold md:mx-0" />
+            <h2 className="mt-5 font-serif text-3xl leading-tight text-burgundy md:text-5xl">
+                Your home for fragrances you love
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-ink/80">
+                Lulu Fragrances brings together popular perfumes from well-loved brands, so you can find
+                your signature scent in one place.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-ink/80">
+                Lulu Fragrances began with a simple love for perfume and the way the right scent can change
+                your whole day. We handpick fragrances we adore, so finding your signature scent feels easy,
+                exciting and a little bit special.
+            </p>
+            <Link
+                to="/about"
+                className="mt-8 inline-block rounded-full border border-burgundy px-10 py-3 text-xs uppercase tracking-[0.2em] text-burgundy transition hover:bg-burgundy hover:text-cream"
+            >
+                Read More About Us
+            </Link>
+        </div>
+    </div>
+</section>
 
 <WhyShopWithUs />
         </>
