@@ -1,12 +1,14 @@
 import products from '../data/products'
 import ProductCard from '../components/ProductCard'
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 
 function Shop() {
+    const [searchParams] = useSearchParams()
     const [search, setSearch] = useState("")
-    const [genderFilter, setGenderFilter] = useState("")
-    const [scentFilter, setScentFilter] = useState("")
+   const [genderFilter, setGenderFilter] = useState(searchParams.get("gender") || "")
+const [scentFilter, setScentFilter] = useState(searchParams.get("scent") || "")
     const [priceFilter, setPriceFilter] = useState("")
 
     const cleanSearch = search.trim().toLowerCase()

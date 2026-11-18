@@ -63,7 +63,7 @@ function Home() {
             {["Women", "Men", "Unisex"].map((category) => (
                 <Link
                     key={category}
-                    to="/shop"
+                   to={`/shop?gender=${category}`}
                     className="flex h-28 items-center justify-center rounded-2xl bg-sand font-serif text-3xl text-burgundy transition hover:bg-burgundy hover:text-cream md:h-32"
                 >
                     {category}
