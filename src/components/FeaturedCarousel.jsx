@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { CartContext } from '../context/CartContext.jsx'
+import ProductCard from './ProductCard.jsx'
 
 const PER_PAGE = 2 // cards in view on a phone
 const DELAY = 3500 // time between slides, in milliseconds
@@ -88,24 +89,7 @@ function FeaturedCarousel({ products }) {
                         {pages.map((pageItems, i) => (
                             <div key={i} className="grid w-full flex-none grid-cols-2 gap-3 px-1">
                                 {pageItems.map((product) => (
-                                    <div key={product.id} className="rounded-2xl bg-[#FFFAF2] p-2.5 text-center shadow-md">
-                                        <img
-                                            src={product.image}
-                                            alt={product.name}
-                                            className="aspect-[4/5] w-full rounded-xl object-cover"
-                                        />
-                                        <h3 className="mt-3 font-serif text-lg text-ink">{product.name}</h3>
-                                        <p className="mt-1 text-sm font-medium text-ink/80">
-                                            KES {product.price.toLocaleString()}
-                                        </p>
-                                        <button
-                                            type="button"
-                                            onClick={() => addToCart(product)}
-                                            className="mt-3 w-full rounded-lg bg-burgundy px-3 py-2 text-xs font-medium text-cream"
-                                        >
-                                            Add to Cart
-                                        </button>
-                                    </div>
+                                    <ProductCard key={product.id} product={product} />
                                 ))}
                             </div>
                         ))}
